@@ -77,8 +77,8 @@ function sendTweet(tweetString, reply_to_id){
 }
 async function checkMockupStatus(data) {
   let response = await axios.get(`https://api.printful.com/mockup-generator/task?task_key=${data.taskId}`, { headers: printfulHeaders });
-  console.log("generating tweet2shirt product");
-  if(response.data.result.status === 'completed'){
+  console.log(`generating tweet2shirt product. STATUS:${response.data.result.status}`);
+  if(response.data.result.status !== 'pending'){
     clearInterval(interval);
     response.data.result.mockups[0].mockup_url
     const product = await stripe.products.create({
