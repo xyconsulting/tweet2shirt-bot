@@ -92,7 +92,7 @@ async function checkMockupStatus(data) {
       product: product.id,
     });
     console.log("Mockup created + stripe product added.");
-    sendTweet(`${data.userAtString} here's your shirt! http://localhost:3000/product/${price.id}`, data.replyToId);
+    sendTweet(`${data.userAtString} here's your shirt! ${process.env.FRONT_END_URL}/product/${price.id}`, data.replyToId);
   }
 }
 
